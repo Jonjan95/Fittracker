@@ -1,43 +1,25 @@
-import pool from '@/lib/db';
-import { addProduct, deleteProduct } from './actions';
+import Link from 'next/link';
 
-export default async function Page() {
-  const [rows] = await pool.query('SELECT * FROM items');
-
+export default function Page() {
   return (
-    <main style={{ padding: '20px' }}>
-      <h1>Produkthantering</h1>
-      
-      <form action={addProduct} style={{ marginBottom: '20px' }}>
-        <input name="name" placeholder="Produktnamn" required />
-        <input name="description" placeholder="Beskrivning" required />
-        <button type="submit">Lägg till</button>
-      </form>
+    <main style={{ padding: '40px', textAlign: 'center' }}>
+      <h1>Fittracker</h1>
+      <p>Välkommen. Välj ett alternativ nedan för att komma igång.</p>
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Namn</th>
-            <th>Beskrivning</th>
-            <th>Åtgärd</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.name}</td>
-              <td>{item.description}</td>
-              <td>
-                <form action={deleteProduct.bind(null, item.id)}>
-                  <button type="submit">Ta bort</button>
-                </form>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <nav style={{ marginTop: '20px', display: 'flex', gap: '15px', justifyContent: 'center' }}>
+        <Link
+          href="/register"
+          style={{ padding: '10px 20px', backgroundColor: '#0070f3', color: 'white', borderRadius: '5px', textDecoration: 'none' }}
+        >
+          Registrera konto
+        </Link>
+        <Link
+          href="/login"
+          style={{ padding: '10px 20px', backgroundColor: '#eaeaea', color: 'black', borderRadius: '5px', textDecoration: 'none' }}
+        >
+          Logga in
+        </Link>
+      </nav>
     </main>
   );
 }
