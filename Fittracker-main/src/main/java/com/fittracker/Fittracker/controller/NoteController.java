@@ -1,7 +1,7 @@
 package com.fittracker.Fittracker.controller;
 
 import com.fittracker.Fittracker.model.Note;
-import com.fittracker.Fittracker.service.NoteService; // Importera servicen istället
+import com.fittracker.Fittracker.service.NoteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class NoteController {
 
-    // Använd NoteService istället för NoteRepository
+
     private final NoteService noteService;
 
     public NoteController(NoteService noteService) {
@@ -19,8 +19,7 @@ public class NoteController {
     }
 
     @GetMapping("/user/{userId}")
-    public List<Note> getNotesByUserId(@PathVariable Long userId) {
-        return noteService.getNotesByUserId(userId);
+    public List<Note> getNotesByUserId(@PathVariable Long userId) { return noteService.getNotesByUserId(userId);
     }
 
     @PostMapping

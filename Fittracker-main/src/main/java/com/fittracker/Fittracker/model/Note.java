@@ -19,10 +19,10 @@ public class Note {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // Standardkonstruktor krävs av JPA
+
     public Note() {}
 
-    // Getters och Setters
+
     public Long getId() {
         return id;
     }
