@@ -16,19 +16,19 @@ export default function RegisterPage() {
     });
 
     if (res.ok) {
-      alert("Konto skapat");
+      alert("Account created");
       router.push("/login");
     }
   };
 
   return (
     <div className="p-10">
-      <h1 className="text-2xl font-bold mb-4">Registrera konto</h1>
+      <h1 className="text-2xl font-bold mb-4">Create account</h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-sm">
         <input
           className="border p-2"
           type="text"
-          placeholder="Användarnamn"
+          placeholder="Username"
           onChange={e => setForm({...form, userName: e.target.value})}
           required
         />
@@ -42,12 +42,12 @@ export default function RegisterPage() {
         <input
           className="border p-2"
           type="password"
-          placeholder="Lösenord"
+          placeholder="Password"
           onChange={e => setForm({...form, password: e.target.value})}
           required
         />
         <button type="submit" className="bg-blue-600 text-white p-2 rounded">
-          Registrera
+          Create account
         </button>
       </form>
     </div>

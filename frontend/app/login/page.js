@@ -20,30 +20,30 @@ export default function LoginPage() {
       localStorage.setItem("userId", user.id);
       router.push("/dashboard");
     } else {
-      alert("Fel användarnamn eller lösenord");
+      alert("Wrong username or password");
     }
   };
 
   return (
     <div className="p-10">
-      <h1 className="text-2xl font-bold mb-4">Logga in</h1>
+      <h1 className="text-2xl font-bold mb-4">Log in</h1>
       <form onSubmit={handleLogin} className="flex flex-col gap-4 max-w-sm">
         <input
           className="border p-2"
           type="text"
-          placeholder="Användarnamn"
+          placeholder="Username"
           onChange={e => setForm({...form, userName: e.target.value})}
           required
         />
         <input
           className="border p-2"
           type="password"
-          placeholder="Lösenord"
+          placeholder="Password"
           onChange={e => setForm({...form, password: e.target.value})}
           required
         />
         <button type="submit" className="bg-blue-600 text-white p-2 rounded">
-          Logga in
+          Log in
         </button>
       </form>
     </div>
