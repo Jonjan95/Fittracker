@@ -1,62 +1,59 @@
-Setupguide: Fittracker
+# Fittracker
 
-Följ dessa steg för att konfigurera och köra projektet.
-1. Systemkrav
-Säkerställ att följande mjukvara är installerad:
+Fitness-tracker app: Spring Boot (Java) backend + Next.js frontend + MySQL.
 
-    Git for Windows: För kloning av arkivet.
+> **Note:** README is a work in progress — a full project overview is coming soon.
 
-    Docker Desktop: Krävs för att köra MySQL-containern. Aktivera WSL2-backend i inställningarna.
+## Project structure
 
-    Node.js (LTS): Version 18 eller senare rekommenderas.
+```
+fittracker/
+├── backend/             # Spring Boot REST API (Java 21, Maven)
+├── frontend/            # Next.js + React UI
+└── docker-compose.yaml  # MySQL container for local dev
+```
 
-    pnpm: Installeras via npm install -g pnpm.
+## Local setup
 
+### Prerequisites
 
-2. Klona projektet
-Öppna en terminal och kör:
-Bash
+- Docker Desktop
+- Java 21 (or use the bundled `mvnw`)
+- Node.js 18+ and `pnpm` (or `npm`)
 
-git clone https://github.com/Jonjan95/Fittracker.git
-cd Fittracker
+### 1. Start the database
 
+From the repo root:
 
-3. Starta databasmiljön (Docker)
-Stå kvar i rotkatalogen (där docker-compose.yaml finns) och kör:
-Bash
-
+```bash
 docker compose up -d
+```
 
-Detta startar en MySQL-instans på port 3308.
+MySQL is exposed on port `3308`.
 
+### 2. Start the backend
 
-4. Konfigurera miljövariabler (.env)
-Då .env-filen är ignorerad av Git måste den skapas manuellt. Skapa en fil med namnet .env i mappen my-app/ och lägg till följande rader:
-Kodavsnitt
+```bash
+cd backend
+./mvnw spring-boot:run
+```
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=ditt_valda_lösenord
-DB_DATABASE=fittracker
-DB_PORT=3308
+The API runs on `http://localhost:8080`.
 
-Obs: Matchas mot inställningarna i din docker-compose.yaml.
+### 3. Start the frontend
 
-
-5. Installera och starta frontend
-Navigera till frontend-mappen:
-Bash
-
-cd my-app
+```bash
+cd frontend
 pnpm install
 pnpm dev
+```
 
-Applikationen nås på http://localhost:3000.
+Open `http://localhost:3000`.
 
+## Useful commands
 
-6. Vanliga kommandon vid felsökning
-   Visa loggar för databasen: docker compose logs -f
-
-   Stoppa databasen: docker compose down
-
-   Rensa databasvolym (vid behov): rm -rf ../dbfiles (varning: raderar all data).
+```bash
+docker compose logs -f db   # tail database logs
+docker compose down         # stop the database
+docker compose down -v      # stop and wipe the database volume
+```
