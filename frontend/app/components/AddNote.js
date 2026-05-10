@@ -8,7 +8,6 @@ export default function AddNote({ userId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Konvertera userId till siffra för att matcha backend-modellens datatyp
     const noteData = {
       content: content,
       user: { id: parseInt(userId) }
@@ -26,12 +25,12 @@ export default function AddNote({ userId }) {
         window.location.reload();
       } else {
         const errorMsg = await res.text();
-        console.error("Backend returnerade fel:", errorMsg);
-        alert("Kunde inte spara: " + errorMsg);
+        console.error("Backend returned an error:", errorMsg);
+        alert("Could not save: " + errorMsg);
       }
     } catch (error) {
-      console.error("Nätverksfel eller anslutning misslyckades:", error);
-      alert("Anslutningsfel till servern.");
+      console.error("Network or connection error:", error);
+      alert("Could not connect to the server.");
     }
   };
 
@@ -41,11 +40,11 @@ export default function AddNote({ userId }) {
         className="w-full p-2 border"
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Skriv träningsnotering..."
+        placeholder="Write a training note..."
         required
       />
       <button type="submit" className="bg-green-600 text-white px-4 py-2 mt-2">
-        Spara
+        Save
       </button>
     </form>
   );
