@@ -1,14 +1,18 @@
 # Fittracker
 
-A small full-stack fitness-tracker web app where users can register, log in, and keep a journal of their training sessions.
+A small full-stack web app where users register, log in, and keep a personal journal of free-form notes.
 
 > **About this project**
-> Fittracker is a school project built to learn a production-grade backend stack end-to-end — Spring Boot, JPA, REST APIs, and MySQL running in Docker. The Next.js frontend is intentionally minimal: it exists to exercise the API, not as a UI showcase. The project is feature-complete for its original learning goals.
+> Fittracker is a school project built to learn a production-grade backend stack end-to-end — Spring Boot, JPA, REST APIs, and MySQL running in Docker.
+>
+> The original idea was a fitness/training tracker (hence the name), but the implemented scope landed closer to a generic per-user note-taker: any user can keep a list of free-form text entries. The data model and UI don't enforce a fitness shape on the content.
+>
+> The Next.js frontend is intentionally minimal — it exists to exercise the API, not as a UI showcase. The project is feature-complete for its original learning goals.
 
 ## Features
 
 - User registration and login
-- Per-user training journal (create, list, delete notes)
+- Per-user note journal (create, list, delete free-form text entries)
 - REST API with versioned routes (`/api/users`, `/api/notes`)
 - Persistent storage in MySQL via Spring Data JPA
 - Containerized database via Docker Compose for one-command local setup
