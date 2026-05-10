@@ -35,7 +35,7 @@ export default function Dashboard() {
     if (res.ok) {
       setNotes(notes.filter((note) => note.id !== noteId));
     } else {
-      alert("Kunde inte radera notering");
+      alert("Could not delete note");
     }
   };
 
@@ -43,14 +43,14 @@ export default function Dashboard() {
 
   return (
     <main className="p-10 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Dina träningsnoteringar</h1>
+      <h1 className="text-3xl font-bold mb-6">Your training notes</h1>
 
       <AddNote userId={userId} />
 
       <div className="mt-10 space-y-4">
-              <h2 className="text-xl font-semibold border-b pb-2 text-black">Sparade pass</h2>
+              <h2 className="text-xl font-semibold border-b pb-2 text-black">Saved sessions</h2>
               {notes.length === 0 ? (
-                <p className="text-gray-500 italic">Inga noteringar hittades.</p>
+                <p className="text-gray-500 italic">No notes found.</p>
               ) : (
                 notes.map((note) => (
                   <div
@@ -61,7 +61,7 @@ export default function Dashboard() {
                       <p className="text-lg text-black font-medium">{note.content}</p>
                       {note.createdAt && (
                         <small className="text-gray-600 block mt-1">
-                          {new Date(note.createdAt).toLocaleString('sv-SE')}
+                          {new Date(note.createdAt).toLocaleString()}
                         </small>
                       )}
                     </div>
@@ -69,7 +69,7 @@ export default function Dashboard() {
                       onClick={() => deleteNote(note.id)}
                       className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors ml-4"
                     >
-                      Radera
+                      Delete
                     </button>
                   </div>
                 ))

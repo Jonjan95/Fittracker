@@ -12,7 +12,7 @@
 	<artifactId>Fittracker</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Fittracker</name>
-	<description>Fitness Tracker. Blerons och Jonathans projekt</description>
+	<description>Fitness Tracker — REST API backend for the Fittracker school project.</description>
 	<url/>
 	<licenses>
 		<license/>
