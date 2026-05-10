@@ -1,12 +1,15 @@
 services:
-
   db:
-     image: mysql:latest
-     container_name: fittracker-db
-     ports:
-       - "3308:3306"
-     environment:
-       - MYSQL_ROOT_PASSWORD=password
-       - MYSQL_DATABASE=fittracker-db
-     volumes:
-       - ~/Documents/DEV/dbfiles:/var/lib/mysql 
+    image: mysql:8
+    container_name: fittracker-db
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: fittracker-db
+    volumes:
+      - fittracker-data:/var/lib/mysql
+
+volumes:
+  fittracker-data:
